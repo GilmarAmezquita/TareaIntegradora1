@@ -101,7 +101,7 @@ public class Main{
 		return resultPrices;
 	}
 	/**
-	* Imprime los valores del precio de los materiales y el total a pagar por la obra despues de llamar al metodo Budget.sumPrices. <br>
+	* Imprime los valores del precio de los materiales y el total a pagar por la obra despues de llamar al metodo operations.sumPrices. <br>
 	* <b>pre: </b> 
 	*         1.Los precios ingresados para cada material debe ser un numero natural (0 si no tienen el material). <br>
 	*         2.Las cantidades de unidades de los materiales deben ser mayores a cero. <br>
@@ -113,13 +113,13 @@ public class Main{
 	* @param location localización del inmueble.
 	*/
 	public static void getTotalPrice(int[] prices, double[] quantity, String store, String location){
-		double subResult = Budget.sumPrices(prices,quantity,0,0,0,location);
-		double result = Budget.sumPrices(prices,quantity,structuralWork,finishWork,painting,location);
+		double subResult = operations.sumPrices(prices,quantity,0,0,0,location);
+		double result = operations.sumPrices(prices,quantity,structuralWork,finishWork,painting,location);
 		System.out.print("El precio total por los materiales, incluyendo domicilio, si se compra en "+store+" es: $"+subResult+
 		"\nSi se incluye mano de obra son: $"+result+"\n");
 	}
 	/**
-	* El metodo imprime el lugar donde es mejor comprar un material y su precio, despues de llamar al metodo Budget.lowerPrice. <br>
+	* El metodo imprime el lugar donde es mejor comprar un material y su precio, despues de llamar al metodo operations.lowerPrice. <br>
 	* <b>pre: </b> Los precios deben haberse estar inicializados con numeros reales. <br>
 	* <b>post: </b> Imprime el lugar donde es mejor comprar cada material y su precio.
 	* @param HomeCenter arreglo con los costos de cada material en la tienda HomeCenter.
@@ -133,7 +133,7 @@ public class Main{
 		int low = 0;
 		System.out.println("\n");
 		for(int i = 0; i<HomeCenter.length; i++){
-			low = Budget.lowerPrice(HomeCenter[i],IronmongeryCenter[i],IronmongeryDistrict[i]);
+			low = operations.lowerPrice(HomeCenter[i],IronmongeryCenter[i],IronmongeryDistrict[i]);
 			result[i] = low;
 			if(low==HomeCenter[i]){
 				System.out.println("El mejor lugar para comprar el material '"+materialNames[i]+"' es en HomeCenter a: $"+low);

@@ -1,5 +1,5 @@
 package model;
-public class Budget{
+public class operations{
 	/**
 	* Sum for: <br>
 	*		1. Cost to pay for the materials. <br>
