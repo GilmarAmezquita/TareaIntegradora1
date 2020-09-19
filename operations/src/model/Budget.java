@@ -1,19 +1,21 @@
 package model;
 public class Budget{
 	/**
-	* Realiza la suma para la informacion suministrada por el usuario. Precio a pagar por los materiales y el precio total por la remodelación.
+	* Sum for: <br>
+	*		1. Cost to pay for the materials. <br>
+	*		2. Total cost for remodeling.
 	* <b>pre: </b>
-	*			  1. Los precios deben ser validos, numeros naturales.<br>
-	*			  2. Las unidades que se compran de cada material deben ser mayores a cero. <br>
-	*             3. La ubicación del inmueble debe ser estrictamente norte, centro o sur.
+	*			  1. The prices must be natural numbers. <br>
+	*			  2. The units to be purchased for each material must be greater than zero. <br>
+	*             3. The locations of the property must be norte, centro o sur.
 	* <b>post: </b>
-	* @param prices arreglo de los precios que ingresa.
-	* @param quantity arreglo de  unidades que se compraran por cada material.
-	* @param structuralWork costo de mano de obra por la obra negra.
-	* @param finishWork costo de mano de obra por la obra blanca.
-	* @param painting costo de mano de obra por la pintura.
-	* @param location ubicación del inmueble.
-	* @return result total de la suma de los precios.
+	* @param prices array of the prices.
+	* @param quantity array of units to be purchased for each material.
+	* @param structuralWork labor cost for structuralWork.
+	* @param finishWork labor cost for finishWork.
+	* @param painting labor cost for painting.
+	* @param location location of the property
+	* @return result total sum of prices.
 	*/
 	public static double sumPrices(int[] prices,double[] quantity, int structuralWork, int finishWork,int painting, String location){
 		double result = 0;
@@ -25,12 +27,12 @@ public class Budget{
 		return result;
 	}
 	/*
-	* Compara la informacion obtenida para devolver el costo de domicilio correspondiente.
-	* <b>pre: </b> La ubicacion del inmueble debe ser estrictamente norte, centro o sur. <br>
-	* <b>post: </b> Devuelve el costo correcto del domicilio de la compra de los materiales.
-	* @param sum valor de los materiales a comprar sin incluir el domicilio.
-	* @param location ubicación del inmueble.
-	* @return result valor del domicilio.
+	* Compare the information to get the shipping price.
+	* <b>pre: </b> The locations of the property must be norte, centro o sur. <br>
+	* <b>post: </b> Return the price for shipping.
+	* @param sum Cost of the materials withouth shipping.
+	* @param location location of the property.
+	* @return result price for shipping.
 	*/
 	public static int shippingPrice(double sum, String location){
 		int result = 0;
@@ -54,13 +56,13 @@ public class Budget{
 		return result;
 	}
 	/**
-	* Verifica que tienda ofrece el mejor precio. <br>
-	* <b>pre: </b> Recibe precios en números naturales de un mismo material. <br>
-	* <b>post: </b> El resultado debe ser el mas bajo, mayor a cero.
-	* @param HomeCenter precio del material en la tienda HomeCenter.
-	* @param IronmongeryCenter precio del material en la Ferreteria del centro.
-	* @param IronmongeryDistrict precio del material en la Ferreteria del barrio.
-	* @return result menor precio del material mayor a cero.
+	* Check which store has the best price for a material. <br>
+	* <b>pre: </b> Receive prices in natural numbers for the same material. <br>
+	* <b>post: </b> Return the lowest price, greater than zero.
+	* @param HomeCenter material price in the HomeCenter store.
+	* @param IronmongeryCenter material price in the ironmongery of center.
+	* @param IronmongeryDistrict material price in the ironmongery of the district.
+	* @return result material lowest price.
 	*/
 	public static int lowerPrice(int HomeCenter, int IronmongeryCenter, int IronmongeryDistrict){
 		int result = 0;

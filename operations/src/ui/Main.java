@@ -13,10 +13,10 @@ public class Main{
 		showData(sc);
 	}
 	/**
-	* Muestra toda la informacion en pantalla.
+	* Shows the information on screen.
 	* <b>pre: </b> <br>
 	* <b>post: </b>
-	* @param sc escaner que recibe la informacion suministrada por el usuario.
+	* @param sc scanner that receives the information from the user.
 	*/
 	public static void showData(Scanner sc){
 		System.out.print("Ingrese la cantidad de materiales de la lista: ");
@@ -33,19 +33,14 @@ public class Main{
 			materialQuantity[i] = getMaterialsQuantity(sc,materialNames[i]);
 		}
 		int[] priceHomeCenter = getPrice(sc,materialNames,store1);
-		
-		
-		
 		getTotalPrice(priceHomeCenter,materialQuantity,store1,location);
 		int[] priceIronmongeryCenter = getPrice(sc,materialNames,store2);
 		getTotalPrice(priceIronmongeryCenter,materialQuantity,store2,location);
 		int[] priceIronmongeryDistrict = getPrice(sc,materialNames,store3);
 		getTotalPrice(priceIronmongeryDistrict,materialQuantity,store3,location);
-		
 		int[] lowerPriceMaterials = getLowerPrices(priceHomeCenter, priceIronmongeryCenter, priceIronmongeryDistrict, materialNames);
 		getTotalPrice(lowerPriceMaterials,materialQuantity,"el mejor precio",location);
-		
-		getMaterialsByDestination(materialDestination,materialNames);
+		getMaterialsByDestination(materialDestination,materialNames,sc);
 	}
 	/**
 	* Imprime la instruccion y recibe el nombre del material. <br>
@@ -69,7 +64,7 @@ public class Main{
 	* @return result utilización del material.
 	*/
 	public static String getMaterialsDestination(Scanner sc, String materialNames){
-		System.out.println("Utilizacion del '"+materialNames+"' (obra blanca u obra negra):");
+		System.out.println("Utilizacion del '"+materialNames+"' (obra negra, obra blanca o pintura):");
 		String result = sc.nextLine();
 		return result;
 	}
@@ -151,21 +146,52 @@ public class Main{
 		return result;
 	}
 	/**
-	* El metodo imprime una lista para los materiales con utilización de obra blanca u obra negra. <br>
-	* <b>pre: </b> El usuario solo puede ingresar en el tipo de utilizacion respectiva para el material. <br>
-	* <b>post: </b> Imprime los nombres de los materiales en su respectiva utilizacion.
-	* @param destination arreglo de cadenas con el tipo de utilizacion de cada material. 
-	* @param materialsNames arreglo de cadenas con los nombres de los materiales, asociado a su utilizacion. 
+	* Print the list by the kind of utilization <br>
+	* <b>pre: </b> The use can only be one of the three mentioned <br>
+	* <b>post: </b> Print the name of the materials by utilization.
+	* @param destination array string with the utilization of each material. 
+	* @param materialsNames array string with the names of the materials. 
+	* @param sc scanner that go to method printDestination.
 	*/
-	public static void getMaterialsByDestination(String[] destination, String[] materialsNames){
-		String[] kindDestination = {"obra blanca", "obra negra"};
-		for(int i = 0; i<kindDestination.length; i++){
-			System.out.println("\nLos materiales con el tipo de utilizacion '"+kindDestination[i]+"' son:");
-			for(int j = 0; j<destination.length; j++){
-				if(destination[j].equalsIgnoreCase(kindDestination[i])){
-					System.out.println(materialsNames[j]);
+	public static void getMaterialsByDestination(String[] destination, String[] materialsNames, Scanner sc){
+		int print = printDestination(sc);
+		String[] kindDestination = {"obra blanca", "obra negra", "pintura"};
+		System.out.println("\nLos materiales con el tipo de utilizacion "+kindDestination[print-1]+" son:");
+		switch(print){
+			case 1:
+				for(int j=0; j<destination.length; j++){
+					if(destination[j].equalsIgnoreCase(kindDestination[0])){
+						System.out.println(materialsNames[j]);
+					}
 				}
-			}
+				break;
+			case 2:
+				for(int j=0; j<destination.length; j++){
+					if(destination[j].equalsIgnoreCase(kindDestination[1])){
+						System.out.println(materialsNames[j]);
+					}
+				}
+				break;
+			case 3:
+				for(int j=0; j<destination.length; j++){
+					if(destination[j].equalsIgnoreCase(kindDestination[2])){
+						System.out.println(materialsNames[j]);
+					}
+				}
+				break;
+			default:
 		}
+	}
+	/**
+	* Receives the kind of utilization that user wants to print the list.
+	* <b>pre:</b> <br>
+	* <b>post:</b> The option just can be one of the three utilizations.
+	* @param sc scanner that receives the option of the user.
+	* @return result the option of the user.
+	*/
+	public static int printDestination(Scanner sc){
+		System.out.println("\nIngrese el numero respectivo para imprimir los materiales de la utilizacion: \n1. Obra blanca. \n2. Obra negra. \n3. Pintura");
+		int result = sc.nextInt();
+		return result;
 	}
 }
