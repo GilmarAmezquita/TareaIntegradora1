@@ -135,12 +135,13 @@ public class Main{
 		for(int i = 0; i<HomeCenter.length; i++){
 			low = operations.lowerPrice(HomeCenter[i],IronmongeryCenter[i],IronmongeryDistrict[i]);
 			result[i] = low;
+			System.out.println("El mejor lugar para comprar el material '"+materialNames[i]+"' es en: ");
 			if(low==HomeCenter[i]){
-				System.out.println("El mejor lugar para comprar el material '"+materialNames[i]+"' es en HomeCenter a: $"+low);
+				System.out.println("HomeCenter a: $"+low+"\n");
 			}else if(low==IronmongeryCenter[i]){
-				System.out.println("El mejor lugar para comprar el material '"+materialNames[i]+"' es en la Ferreteria del centro  a: $"+low);
+				System.out.println("La Ferreteria del centro  a: $"+low+"\n");
 			}else if(low==IronmongeryDistrict[i]){
-				System.out.println("El mejor lugar para comprar el material '"+materialNames[i]+"' es en la Ferreteria del barrio a: $"+low);
+				System.out.println("La Ferreteria del barrio a: $"+low+"\n");
 			}
 		}
 		return result;
