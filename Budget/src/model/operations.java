@@ -60,7 +60,7 @@ public class operations{
 	* <b>pre: </b> Receive prices in natural numbers for the same material. <br>
 	* <b>post: </b> Return the lowest price, greater than zero.
 	* @param HomeCenter material price in the HomeCenter store.
-	* @param IronmongeryCenter material price in the ironmongery of center.
+	* @param IronmongeryCenter material price in the downtown ironmongery.
 	* @param IronmongeryDistrict material price in the ironmongery of the district.
 	* @return result material lowest price.
 	*/

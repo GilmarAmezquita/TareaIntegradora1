@@ -43,12 +43,12 @@ public class Main{
 		getMaterialsByDestination(materialDestination,materialNames,sc);
 	}
 	/**
-	* Imprime la instruccion y recibe el nombre del material. <br>
-	* <b>pre: </b> La longitud de la lista que ingresa el usuario debe ser un numero natural. <br>
-	* <b>post: </b> Devuelve una cadena.
-	* @param sc escaner con el que recibe el nombre del material.
-	* @param index posición del material en la lista.
-	* @return result nombre del material.
+	* Prints the instruction and receives the name of the material. <br>
+	* <b>pre: </b> The length of the list that the user enters must be a natural number. <br>
+	* <b>post: </b> Return a string with the material name.
+	* @param sc scanner that receives the material name.
+	* @param index position of the material in the array
+	* @return result material name
 	*/
 	public static String getMaterialsName(Scanner sc, int index){
 		System.out.println("\nNombre del material No."+(index+1)+":");
@@ -56,12 +56,12 @@ public class Main{
 		return result;
 	}
 	/**
-	* Imprime la instruccion y recibe la utilizacion que tendra el material. <br>
-	* <b>pre: </b> Cadena valida para el nombre del material. <br>
-	* <b>post: </b> Devuelve una cadena.
-	* @param sc escaner con el que se recibe la utilización.
-	* @param materialNames cadena en la que se guarda el nombre del material.
-	* @return result utilización del material.
+	* Prints the instruction and receives the utilization of the material. <br>
+	* <b>pre: </b> Valid string for the material name: materialNames <br>
+	* <b>post: </b> Return a string with the material utilization.
+	* @param sc scanner that receives the material utilization.
+	* @param materialNames string that saves the name of the material.
+	* @return result material utilization.
 	*/
 	public static String getMaterialsDestination(Scanner sc, String materialNames){
 		System.out.println("Utilizacion del '"+materialNames+"' (obra negra, obra blanca o pintura):");
@@ -69,12 +69,12 @@ public class Main{
 		return result;
 	}
 	/**
-	* Imprime la instrucción y recibe la cantidad de unidades del material. <br>
-	* <b>pre: </b> Cadena valida para el nombre del material. <br>
-	* <b>post: </b> Devuelve un numero real.
-	* @param sc escaner con el que se recibe la cantidad.
-	* @param materialNames cadena en la que se guarda el nombre del material.
-	* @return result cantidad que se necesita del material.
+	* Prints the instruction and receives the quantity of units for material. <br>
+	* <b>pre: </b> Valid string for the material name: materialNames <br>
+	* <b>post: </b> Return a real number with the quantity of material units.
+	* @param sc scanner that receives the quantity.
+	* @param materialNames String that saves the name of the material.
+	* @return result quantity of units required of the material.
 	*/
 	public static double getMaterialsQuantity(Scanner sc, String materialNames){
 		System.out.println("Cantidad que comprara del material '"+materialNames+"' (unidades):");
@@ -83,13 +83,13 @@ public class Main{
 		return result;
 	}
 	/**
-	* Imprime la instruccion y recibe el precio de cada material en una de las tiendas. <br>
-	* <b>pre: </b> Cadenas validas para los nombres de los materiales. <br>
-	* <b>post: </b> Devuelve un número entero.
-	* @param sc escaner con el que se recibe los precios para cada tienda.
-	* @param materials arreglo de cadenas que tiene los nombres de los materiales.
-	* @param store cadena contenedora del nombre de la tienda que se recibe el precio.
-	* @return resultPrices arreglo de los precios para cada material.
+	* Prints the instruction and receives the price of each material in one of the three stores. <br>
+	* <b>pre: </b> Valid array of strings for the materials name: materials<br>
+	* <b>post: </b> Return an array with natural numbers.
+	* @param sc scanner that receives the price for each material.
+	* @param materials array of strings that saves the materials names.
+	* @param store string with the name of the store.
+	* @return resultPrices array with the price of each material in a store.
 	*/
 	public static int[] getPrice(Scanner sc, String[] materials, String store){
 		int[] resultPrices = new int[materials.length];
@@ -101,16 +101,16 @@ public class Main{
 		return resultPrices;
 	}
 	/**
-	* Imprime los valores del precio de los materiales y el total a pagar por la obra despues de llamar al metodo operations.sumPrices. <br>
-	* <b>pre: </b> 
-	*         1.Los precios ingresados para cada material debe ser un numero natural (0 si no tienen el material). <br>
-	*         2.Las cantidades de unidades de los materiales deben ser mayores a cero. <br>
-	*         3.La localizacion del inmueble solo puede ser norte, sur o centro.
-	* <b>post: </b> Imprime informacion, que contiene la tienda, el valor total a pagar por los materiales y el valor a pagar por toda la remodelacion.
-	* @param prices arreglo con los precios de los materiales.
-	* @param quantity unidades que se compraran de los materiales.
-	* @param store cadena que contiene el nombre de la tienda.
-	* @param location localización del inmueble.
+	* Prints the cost of the materials and the total cost of the entire remodel. <br>
+	* <b>pre: </b> <br>
+	*         1. The prices of the materials must be natural numbers (0 if the store doesn't have the material). <br>
+	*         2. The quantity of units must be greater than zero. <br>
+	*         3. The location of the property must be norte, sur o centro.
+	* <b>post: </b> Prints the total cost for the materials and the cost for the entire remodel.
+	* @param prices array with the price for each material where the method takes the prices.
+	* @param quantity array with the units required of each material.
+	* @param store string that saves the place where the method takes the prices.
+	* @param location location of the property.
 	*/
 	public static void getTotalPrice(int[] prices, double[] quantity, String store, String location){
 		double subResult = operations.sumPrices(prices,quantity,0,0,0,location);
@@ -119,14 +119,14 @@ public class Main{
 		"\nSi se incluye mano de obra son: $"+result+"\n");
 	}
 	/**
-	* El metodo imprime el lugar donde es mejor comprar un material y su precio, despues de llamar al metodo operations.lowerPrice. <br>
-	* <b>pre: </b> Los precios deben haberse estar inicializados con numeros reales. <br>
-	* <b>post: </b> Imprime el lugar donde es mejor comprar cada material y su precio.
-	* @param HomeCenter arreglo con los costos de cada material en la tienda HomeCenter.
-	* @param IronmongeryCenter arreglo con los costos de cada material en la Ferreteria del centro.
-	* @param IronmongeryDistrict arreglo con los costos de cada material en la Ferreteria del barrio.
-	* @param materialNames arreglo con los nombres de los materiales.
-	* @return result arreglo con los precios mas bajos para cada material.
+	* Prints the location where is better buy the material and its price. <br>
+	* <b>pre: </b> The prices must be real numbers <br>
+	* <b>post: </b> Prints where it's best to buy each material and its price.
+	* @param HomeCenter array with the price of each material in HomeCenter store.
+	* @param IronmongeryCenter array with the price of each material in the downtown ironmongery.
+	* @param IronmongeryDistrict array with the price of each material in district ironmongery.
+	* @param materialNames array with the name of the materials.
+	* @return result array with the lowest price for each material.
 	*/
 	public static int[] getLowerPrices(int[] HomeCenter, int[] IronmongeryCenter, int[] IronmongeryDistrict, String[] materialNames){
 		int[] result = new int[HomeCenter.length];
@@ -146,7 +146,7 @@ public class Main{
 		return result;
 	}
 	/**
-	* Print the list by the kind of utilization <br>
+	* Prints the list by the kind of utilization <br>
 	* <b>pre: </b> The use can only be one of the three mentioned <br>
 	* <b>post: </b> Print the name of the materials by utilization.
 	* @param destination array string with the utilization of each material. 
