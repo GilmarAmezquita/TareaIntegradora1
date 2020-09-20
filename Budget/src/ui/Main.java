@@ -156,31 +156,13 @@ public class Main{
 	public static void getMaterialsByDestination(String[] destination, String[] materialsNames, Scanner sc){
 		int print = printDestination(sc);
 		String[] kindDestination = {"obra blanca", "obra negra", "pintura"};
-		System.out.println("\nLos materiales con el tipo de utilizacion "+kindDestination[print-1]+" son:");
-		switch(print){
-			case 1:
-				for(int j=0; j<destination.length; j++){
-					if(destination[j].equalsIgnoreCase(kindDestination[0])){
-						System.out.println(materialsNames[j]);
-					}
-				}
-				break;
-			case 2:
-				for(int j=0; j<destination.length; j++){
-					if(destination[j].equalsIgnoreCase(kindDestination[1])){
-						System.out.println(materialsNames[j]);
-					}
-				}
-				break;
-			case 3:
-				for(int j=0; j<destination.length; j++){
-					if(destination[j].equalsIgnoreCase(kindDestination[2])){
-						System.out.println(materialsNames[j]);
-					}
-				}
-				break;
-			default:
+		System.out.println("\nLos materiales con el tipo de utilizacion '"+kindDestination[print-1]+"' son:");
+		for(int j=0; j<destination.length; j++){
+			if(destination[j].equalsIgnoreCase(kindDestination[print-1])){
+				System.out.println(materialsNames[j]);
+			}
 		}
+
 	}
 	/**
 	* Receives the kind of utilization that user wants to print the list.
